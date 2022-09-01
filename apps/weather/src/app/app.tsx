@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import NxWelcome from './nx-welcome';
 import DisplayCity from '../components/DisplayCity'
+import DisplayOnLocation from '../components/DisplayOnLocation';
 
 
 const StyledApp = styled.div`
@@ -14,6 +15,7 @@ export function App() {
     <StyledApp>
       <NxWelcome title="weather" />
       <DisplayCity />
+      <DisplayOnLocation />
     </StyledApp>
   );
 }

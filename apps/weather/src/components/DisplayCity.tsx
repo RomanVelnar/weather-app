@@ -9,8 +9,6 @@ export default function DisplayCity() {
     const [fetching, setFetching] = useState<boolean>(false);
     const [error, setError] = useState(null);
     const [response, setResponse] = useState<string | null>(null);
-    const [lat, setLat] = useState<any>([]);
-    const [long, setLong] = useState<any>([]);
 
     const fetchWeather = () => {
         console.log("fetching weather for", city);
@@ -28,17 +26,6 @@ export default function DisplayCity() {
         .finally(() => setFetching(false));
     };
 
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            setLat(position.coords.latitude);
-            setLong(position.coords.longitude)
-        });
-
-        console.log("latitude is:", lat)
-        console.log("longitude is:", long)
-
-    }, [lat, long])
-    
     useEffect(fetchWeather, []);
     useEffect(fetchWeather, [city]);
     return(
