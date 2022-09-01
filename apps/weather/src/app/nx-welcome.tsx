@@ -5,6 +5,14 @@
  Delete this file and get started with your project!
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
+
+
+
+
+
+
+
+
 export function NxWelcome({ title }: { title: string }) {
   return (
     <>
@@ -422,7 +430,7 @@ export function NxWelcome({ title }: { title: string }) {
             </h1>
           </div>
 
-          <div id="hero" className="rounded">
+          {/* <div id="hero" className="rounded">
             <div className="text-container">
               <h2>
                 <svg
@@ -793,7 +801,7 @@ export function NxWelcome({ title }: { title: string }) {
                 nx affected:e2e
               </pre>
             </details>
-          </div>
+          </div> */}
 
           <p id="love">
             Carefully crafted with

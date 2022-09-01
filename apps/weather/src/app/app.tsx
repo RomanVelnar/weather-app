@@ -1,31 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NxWelcome from './nx-welcome';
-import axios from 'axios';
+import { fetchWeatherApi } from '../api/fetchWeatherApi';
 
 
 const StyledApp = styled.div`
   // Your style here
 `;
 
+const cities: string[] = ["london", "paris", "new york"];
+
 export function App() {
+  const [city, setCity] = useState(cities[0]);
+  const [fetching, setFetching] = useState<boolean>(false);
+  const [error, setError] = useState(null);
+  const [response, setResponse] = useState<string | null>(null);
 
-  function getApiData() {
-    
-    const apiCall = async () => {
-        // e.preventDefault()
-        const url = `https://api.openweathermap.org/data/2.5/forecast?id=524901&appid={a02c7f7639ade982a61f32c928f76c34}`;
-        const req = axios.get(url);
-        const res = await req;
+  const fetchWeather = () => {
+    console.log("fetching weather for", city);
+    // do something with city
+    setFetching(true);
+    fetchWeatherApi(city)
+      .then(res => {
+        console.log(res);
+        setResponse(res.data.city.name);
+      })
+      .catch(error => {
+        console.error(error);
+        setError(error);
+      })
+      .finally(() => setFetching(false));
+  };
 
-        console.log(apiCall)
-    }
-}
-
+  useEffect(fetchWeather, []);
+  useEffect(fetchWeather, [city]);
 
   return (
     <StyledApp>
-      <NxWelcome title="weather" />
+      {fetching && <div>"Please Wait, fetching from api"</div>}
+      <NxWelcome title={`to ${city}`} />
+      {response && <div>{response}</div>}
     </StyledApp>
   );
 }
