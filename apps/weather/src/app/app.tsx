@@ -7,7 +7,11 @@ import NxWelcome from './nx-welcome';
 
 
 const StyledApp = styled.div`
-  // Your style here
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 
