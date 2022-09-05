@@ -14,9 +14,9 @@ export function App() {
 
   return (
     <StyledApp>
-      <NxWelcome title="weather" />
+      {/* <NxWelcome title="weather" />
       <DisplayCity />
-      <DisplayOnLocation />
+      <DisplayOnLocation /> */}
       <Weather />
     </StyledApp>
   );
