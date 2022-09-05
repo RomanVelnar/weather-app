@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { WeatherData } from '@weather/api';
@@ -80,20 +80,23 @@ const ResultsWind = styled.div`
 export default function WeatherSearch() {
   const [data, setData] = useState<WeatherData | undefined>();
   const [location, setLocation] = useState<string>('');
-  const temp_unit = 'metric';
+  const temperature_unit = 'metric';
   const api_key = `6026f341a67b8cf7259f31b17578ea61`;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temp_unit}&appid=${api_key}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
 
-  const searchLocation = (event: any) => {
+  const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
     //TODO use useEffect to wrap the fetch function
     if (event.key === 'Enter') {
-      axios.get<WeatherData>(url).then((response) => {
+      axios.get<WeatherData>(url)
+      .then((response) => {
         setData(response.data);
         console.log(response.data);
       });
       setLocation('');
     }
   };
+
+  
 
   //TODO write the handleSearch function for the SearchButton
 
@@ -111,7 +114,7 @@ export default function WeatherSearch() {
         {/* <SearchButton onClick={() => handleSearch()} /> */}
       </SearchContainer>
 
-      {!data && <div>No Data</div>}
+      {!data && <ResultsCard>No Cities selected</ResultsCard>}
 
       {data?.main && (
         <ResultsCard>
@@ -125,28 +128,33 @@ export default function WeatherSearch() {
               </ResultsTemperature>
             )}
             {/* //TODO if statement that changes the description to a picture or changes whole background */}
-            {!!data.weather?.length && <ResultsDescription>
+            {!!data.weather?.length && 
+            <ResultsDescription>
               <p>{data.weather[0].main}</p>
             </ResultsDescription>}
           </ResultsTop>
 
           <ResultsBottom>
-            <ResultsFeels>
-              {data.main ? (
-                <p className="bold">{data.main.feels_like.toFixed()}°C</p>
-              ) : null}
-              <p>Feels Like</p>
-            </ResultsFeels>
+            {data.main && (
+              <ResultsFeels>
+                  <p>{data.main.feels_like.toFixed()}°C</p>
+                <p>Feels Like</p>
+              </ResultsFeels>
+            )}
+
+            {data.main && (
             <ResultsHumidity>
-              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+              <p className="bold">{data.main.humidity}%</p>
               <p>Humidity</p>
             </ResultsHumidity>
-            <ResultsWind>
-              {data.wind ? (
+            )}
+
+            {data.main && (
+              <ResultsWind>
                 <p className="bold">{data.wind.speed.toFixed()} km/h</p>
-              ) : null}
-              <p>Wind Speed</p>
-            </ResultsWind>
+                <p>Wind Speed</p>
+              </ResultsWind>
+            )}
           </ResultsBottom>
         </ResultsCard>
       )}

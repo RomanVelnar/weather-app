@@ -1,5 +1,7 @@
 import axios from "axios";
-  
-const url = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=a02c7f7639ade982a61f32c928f76c34';
 
-export const fetchWeatherApi = async (city: string) => await axios(url);
+const temperature_unit = 'metric';
+const api_key = `6026f341a67b8cf7259f31b17578ea61`;
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
+
+export const fetchWeatherApi = async () => await axios(url);
