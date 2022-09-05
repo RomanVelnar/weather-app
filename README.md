@@ -1,3 +1,38 @@
+# Weather App
+
+## Technolgies used:
+- React
+- styled-components
+- TypeScript
+
+
+## Future development 
+- add the logic that app works on geolocation
+- add fuzzysearch to locations search
+- display the 5day forecast
+- option to switch units between metric and imperial
+- change the weather conditions (clouds, sunny...) to background pictures
+
+## How to install the app
+Firstly, clone the repo:
+
+```
+git clone https://github.com/RomanVelnar/weather-app.git
+```
+
+Secondly, install the dependecies:
+
+```
+npm install
+```
+
+Thirdly, use nx 
+
+```
+npx nx serve weather-app
+```
+
+
 
 
 # Client
