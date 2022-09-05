@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { WeatherData } from '@weather/api';
@@ -80,26 +80,38 @@ const ResultsWind = styled.div`
 export default function WeatherSearch() {
   const [data, setData] = useState<WeatherData | undefined>();
   const [location, setLocation] = useState<string>('');
+  const [error, setError] = useState<WeatherData | undefined>()
+  
   const temperature_unit = 'metric';
   const api_key = `6026f341a67b8cf7259f31b17578ea61`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
-
+  
   const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
     //TODO use useEffect to wrap the fetch function
-    if (event.key === 'Enter') {
-      axios.get<WeatherData>(url)
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
-      setLocation('');
-    }
-  };
+      if
+      (event.key === 'Enter') {
+        axios.get<WeatherData>(url)
+        .then((response) => {
+          setData(response.data);
+          console.log(response.data);
+        })
+        //TODO write the logic that display a div if the user entered the wrong city
+        .catch(err => {
+          if (err.response) {
+            setError(err)
+            console.log(err)
+          }
+        })
+        setLocation('');
+      } 
+    };
+    
 
   
-
+  
+  
   //TODO write the handleSearch function for the SearchButton
-
+  
   return (
     <Container>
       <SearchContainer>
@@ -114,7 +126,9 @@ export default function WeatherSearch() {
         {/* <SearchButton onClick={() => handleSearch()} /> */}
       </SearchContainer>
 
-      {!data && <ResultsCard>No Cities selected</ResultsCard>}
+      {/* {!data && <ResultsCard>No Cities selected</ResultsCard>} */}
+
+      {error ? <div>There is no city with this name</div> : null}
 
       {data?.main && (
         <ResultsCard>
@@ -158,6 +172,7 @@ export default function WeatherSearch() {
           </ResultsBottom>
         </ResultsCard>
       )}
+      {/* } */}
     </Container>
   );
 }
