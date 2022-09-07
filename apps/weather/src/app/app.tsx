@@ -22,7 +22,6 @@ export function App() {
       {/* <NxWelcome title="weather" /> */}
       {/* <DisplayCity />
       <DisplayOnLocation /> */}
-      {/* <Weather /> */}
       <WeatherSearch />
     </StyledApp>
   );

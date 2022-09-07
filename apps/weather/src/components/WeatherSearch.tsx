@@ -133,15 +133,15 @@ export default function WeatherSearch() {
         {data.name !== undefined &&
           <ResultsBottom>
             <ResultsFeels>
-              {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°C</p> : null}
+              {data.main ? <p>{data.main.feels_like.toFixed()}°C</p> : null}
               <p>Feels Like</p>
             </ResultsFeels>
             <ResultsHumidity>
-              {data.main ? <p className='bold'>{data.main.humidity}%</p> : null}
+              {data.main ? <p>{data.main.humidity}%</p> : null}
               <p>Humidity</p>
             </ResultsHumidity>
             <ResultsWind>
-              {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} km/h</p> : null}
+              {data.wind ? <p>{data.wind.speed.toFixed()} km/h</p> : null}
               <p>Wind Speed</p>
             </ResultsWind>
           </ResultsBottom>

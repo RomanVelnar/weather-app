@@ -7,7 +7,7 @@ export default function DisplayCity() {
 
     const [city, setCity] = useState(cities[0]);
     const [fetching, setFetching] = useState<boolean>(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<any>(null);
     const [response, setResponse] = useState<string | null>(null);
 
     const fetchWeather = () => {
