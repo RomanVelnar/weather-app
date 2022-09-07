@@ -2,6 +2,9 @@ weather app based on geolocation
 https://www.freecodecamp.org/news/learn-react-by-building-a-weather-app/
 https://github.com/nishant-666/React-weather/blob/master/src/App.js
 
+weather app with React and Typescript
+https://github.com/esnz/react-weather-app/blob/master/src/components/Header/Header.tsx
+
 weather app that displays certain city
 https://rapidapi.com/blog/weather-app-react/
 
@@ -10,3 +13,7 @@ https://reactjsexample.com/build-a-weather-app-in-react-js-using-open-weather-ap
 
 simple weather app
 https://dev.to/imshines/a-simple-weather-app-using-react-and-openweathermap-api-10m2
+
+theme with styled components
+https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/
+

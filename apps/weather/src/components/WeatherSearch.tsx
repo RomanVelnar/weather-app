@@ -80,38 +80,36 @@ const ResultsWind = styled.div`
 export default function WeatherSearch() {
   const [data, setData] = useState<WeatherData | undefined>();
   const [location, setLocation] = useState<string>('');
-  const [error, setError] = useState<WeatherData | undefined>()
-  
+  const [error, setError] = useState<WeatherData | undefined>();
+  const [fetching, setFetching] = useState<boolean>();
+
   const temperature_unit = 'metric';
   const api_key = `6026f341a67b8cf7259f31b17578ea61`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
-  
+
   const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
     //TODO use useEffect to wrap the fetch function
-      if
-      (event.key === 'Enter') {
-        axios.get<WeatherData>(url)
+    if (event.key === 'Enter') {
+      axios
+        .get<WeatherData>(url)
         .then((response) => {
           setData(response.data);
           console.log(response.data);
         })
         //TODO write the logic that display a div if the user entered the wrong city
-        .catch(err => {
+        .catch((err) => {
           if (err.response) {
-            setError(err)
-            console.log(err)
+            setError(err);
+            console.log(err);
           }
         })
-        setLocation('');
-      } 
-    };
-    
+        .finally(() => setFetching(false))
+      setLocation('');
+    }
+  };
 
-  
-  
-  
   //TODO write the handleSearch function for the SearchButton
-  
+
   return (
     <Container>
       <SearchContainer>
@@ -142,39 +140,26 @@ export default function WeatherSearch() {
               </ResultsTemperature>
             )}
             {/* //TODO if statement that changes the description to a picture or changes whole background */}
-            {!!data.weather?.length && 
-            <ResultsDescription>
-              <p>{data.weather[0].main}</p>
-            </ResultsDescription>}
+            {!!data.weather?.length && (
+              <ResultsDescription>
+                <p>{data.weather[0].main}</p>
+              </ResultsDescription>
+            )}
           </ResultsTop>
 
           <ResultsBottom>
-<<<<<<< HEAD
-            <ResultsFeels>
-              {data.main ? <p>{data.main.feels_like.toFixed()}°C</p> : null}
-              <p>Feels Like</p>
-            </ResultsFeels>
-            <ResultsHumidity>
-              {data.main ? <p>{data.main.humidity}%</p> : null}
-              <p>Humidity</p>
-            </ResultsHumidity>
-            <ResultsWind>
-              {data.wind ? <p>{data.wind.speed.toFixed()} km/h</p> : null}
-              <p>Wind Speed</p>
-            </ResultsWind>
-=======
             {data.main && (
               <ResultsFeels>
-                  <p>{data.main.feels_like.toFixed()}°C</p>
+                <p>{data.main.feels_like.toFixed()}°C</p>
                 <p>Feels Like</p>
               </ResultsFeels>
             )}
 
             {data.main && (
-            <ResultsHumidity>
-              <p className="bold">{data.main.humidity}%</p>
-              <p>Humidity</p>
-            </ResultsHumidity>
+              <ResultsHumidity>
+                <p className="bold">{data.main.humidity}%</p>
+                <p>Humidity</p>
+              </ResultsHumidity>
             )}
 
             {data.main && (
@@ -183,7 +168,6 @@ export default function WeatherSearch() {
                 <p>Wind Speed</p>
               </ResultsWind>
             )}
->>>>>>> 2d56a32663fca00c2cf8a3e99335dd4761e436b1
           </ResultsBottom>
         </ResultsCard>
       )}

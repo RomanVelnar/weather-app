@@ -5,17 +5,15 @@
 
 // export default function DisplayCity() {    
 
-<<<<<<< HEAD
-    const [city, setCity] = useState(cities[0]);
-    const [fetching, setFetching] = useState<boolean>(false);
-    const [error, setError] = useState<any>(null);
-    const [response, setResponse] = useState<string | null>(null);
-=======
+    // const [city, setCity] = useState(cities[0]);
+    // const [fetching, setFetching] = useState<boolean>(false);
+    // const [error, setError] = useState<any>(null);
+    // const [response, setResponse] = useState<string | null>(null);
+
 //     const [city, setCity] = useState(cities[0]);
 //     const [fetching, setFetching] = useState<boolean>(false);
 //     const [error, setError] = useState(null);
 //     const [response, setResponse] = useState<string | null>(null);
->>>>>>> 2d56a32663fca00c2cf8a3e99335dd4761e436b1
 
 //     const fetchWeather = () => {
 //         console.log("fetching weather for", city);

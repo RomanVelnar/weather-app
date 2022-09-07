@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-import WeatherSearch from '../components/WeatherSearch';
-import NxWelcome from './nx-welcome';
-// import DisplayCity from '../components/DisplayCity'
-// import DisplayOnLocation from '../components/DisplayOnLocation';
-// import Weather from "../components/Weather"
-
+import Home from '../pages/Home';
 
 const StyledApp = styled.div`
   width: 100%;
@@ -14,15 +9,10 @@ const StyledApp = styled.div`
   align-items: center;
 `;
 
-
 export function App() {
-
   return (
     <StyledApp>
-      {/* <NxWelcome title="weather" /> */}
-      {/* <DisplayCity />
-      <DisplayOnLocation /> */}
-      <WeatherSearch />
+      <Home />
     </StyledApp>
   );
 }

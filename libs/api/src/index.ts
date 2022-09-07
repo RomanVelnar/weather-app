@@ -1,2 +1,2 @@
 export * from './lib/api';
-export * from './lib/apiTypes';
+export * from './lib/dataTypes/apiTypes';
