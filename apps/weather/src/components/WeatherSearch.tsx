@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { WeatherData } from '@weather/api';
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
-  width: 50%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -103,7 +103,7 @@ export default function WeatherSearch() {
             console.log(err);
           }
         })
-        .finally(() => setFetching(false))
+        .finally(() => setFetching(false));
       setLocation('');
     }
   };
@@ -171,7 +171,6 @@ export default function WeatherSearch() {
           </ResultsBottom>
         </ResultsCard>
       )}
-      {/* } */}
     </Container>
   );
 }
