@@ -1,31 +1,12 @@
-import styled from "styled-components"
-
-const HeaderContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 1rem;
-`
-const HeaderTitle = styled.h1`
-    font-size: 1.5rem;
-`
-const ThemeSwitch = styled.button`
-    background-color: #555555;
-    border: none;
-    color: white;
-    padding: 0.3rem 0.6rem;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-size: 1rem;
-
-`
+import {
+    HeaderContainer, HeaderTitle, ThemeSwitch,
+} from "./styled"
 
 export default function Header() {
-    return(
-        <HeaderContainer>
-            <HeaderTitle>Weather App</HeaderTitle>
-            <ThemeSwitch>toggle theme</ThemeSwitch>
-        </HeaderContainer>
-    )
+  return (
+    <HeaderContainer>
+      <HeaderTitle>Weather App</HeaderTitle>
+      <ThemeSwitch>toggle theme</ThemeSwitch>
+    </HeaderContainer>
+  );
 }
