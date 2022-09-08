@@ -2,7 +2,7 @@ import {
     HeaderContainer, HeaderTitle, ThemeSwitch,
 } from "./styled"
 
-export default function Header() {
+export function Header() {
   return (
     <HeaderContainer>
       <HeaderTitle>Weather App</HeaderTitle>

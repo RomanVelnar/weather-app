@@ -77,7 +77,11 @@ const ResultsWind = styled.div`
   font-size: 1.1rem;
 `;
 
-export default function WeatherSearch() {
+export interface IWeatherSearchProps {
+  onChangeLocation: (location: string) => void;
+}
+
+export function WeatherSearch({ onChangeLocation }: IWeatherSearchProps) {
   const [data, setData] = useState<WeatherData | undefined>();
   const [location, setLocation] = useState<string>('');
   const [error, setError] = useState<WeatherData | undefined>();
@@ -87,28 +91,12 @@ export default function WeatherSearch() {
   const api_key = `6026f341a67b8cf7259f31b17578ea61`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
 
-  const searchLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    //TODO use useEffect to wrap the fetch function
-    if (event.key === 'Enter') {
-      axios
-        .get<WeatherData>(url)
-        .then((response) => {
-          setData(response.data);
-          console.log(response.data);
-        })
-        //TODO write the logic that display a div if the user entered the wrong city
-        .catch((err) => {
-          if (err.response) {
-            setError(err);
-            console.log(err);
-          }
-        })
-        .finally(() => setFetching(false));
-      setLocation('');
+  //TODO write the handleSearch function for the SearchButton
+  const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'enter') {
+      onChangeLocation(location);
     }
   };
-
-  //TODO write the handleSearch function for the SearchButton
 
   return (
     <Container>
@@ -117,7 +105,7 @@ export default function WeatherSearch() {
         <SearchBar
           value={location}
           onChange={(event) => setLocation(event.target.value)}
-          onKeyPress={searchLocation}
+          onKeyPress={onKeyPress}
           placeholder="Enter Location"
           type="text"
         />

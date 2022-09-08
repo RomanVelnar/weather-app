@@ -4,7 +4,6 @@
   "projects": {
     "api": "libs/api",
     "ui": "libs/ui",
-    "weather": "apps/weather",
-    "weather-e2e": "apps/weather-e2e"
+    "weather": "apps/weather"
   }
 }

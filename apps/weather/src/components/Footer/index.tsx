@@ -1,6 +1,6 @@
 import { FooterContainer, FooterTitle, FooterLink } from './styled';
 
-export default function Footer() {
+export function Footer() {
   return (
     <FooterContainer>
       <FooterTitle>Weather App</FooterTitle>
