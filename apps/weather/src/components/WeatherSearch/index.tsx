@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import { WeatherData } from '@weather/api';
 
@@ -18,7 +17,7 @@ const SearchContainer = styled.div`
 `;
 
 const SearchHeading = styled.h2``;
-const SearchBar = styled.input`
+const SearchBar = styled.form`
   padding: 0.5rem;
   border-radius: 5px;
   font-size: 2rem;
@@ -81,34 +80,53 @@ export interface IWeatherSearchProps {
   onChangeLocation: (location: string) => void;
 }
 
-export function WeatherSearch({ onChangeLocation }: IWeatherSearchProps) {
+export function WeatherSearch() {
   const [data, setData] = useState<WeatherData | undefined>();
   const [location, setLocation] = useState<string>('');
   const [error, setError] = useState<WeatherData | undefined>();
   const [fetching, setFetching] = useState<boolean>();
 
-  const temperature_unit = 'metric';
-  const api_key = `6026f341a67b8cf7259f31b17578ea61`;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
+  // const temperature_unit = 'metric';
+  // const api_key = `6026f341a67b8cf7259f31b17578ea61`;
+  // const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${temperature_unit}&appid=${api_key}`;
 
   //TODO write the handleSearch function for the SearchButton
-  const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'enter') {
-      onChangeLocation(location);
-    }
-  };
+  // const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'enter') {
+  //     console.log(location)
+  //     onChangeLocation(location);
+  //   }
+  // };
+
+  // const onSearchInput = (e: any) => {
+  //   setLocation(e.target.value)
+  // }
 
   return (
     <Container>
       <SearchContainer>
         <SearchHeading>Discover the weather around the world:</SearchHeading>
-        <SearchBar
+        {/* <form>
+          <label htmlFor="location-search">
+            <span>Enter location</span>
+          </label>
+          <input 
+            type='text'
+            id='location-search'
+            placeholder='Search for locations'
+            name='search'
+            onChange={onSearchInput}
+          />
+          <button type='submit'>Search</button>
+        </form> */}
+        
+        {/* <SearchBar
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyPress={onKeyPress}
           placeholder="Enter Location"
           type="text"
-        />
+        /> */}
         {/* <SearchButton onClick={() => handleSearch()} /> */}
       </SearchContainer>
 
