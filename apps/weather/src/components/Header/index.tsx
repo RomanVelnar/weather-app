@@ -6,7 +6,10 @@ export function Header() {
   return (
     <HeaderContainer>
       <HeaderTitle>Weather App</HeaderTitle>
-      <ThemeSwitch>toggle theme</ThemeSwitch>
+      <ThemeSwitch>toggle theme</ThemeSwitch>     
     </HeaderContainer>
   );
 }
+
+//TODO useContext hook to change the theme https://reactjs.org/docs/hooks-reference.html#usecontext
+

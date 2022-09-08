@@ -1,29 +1,29 @@
 import { useEffect, useState } from 'react';
 import { WeatherData, fetchWeatherApi } from '@weather/api';
 import { Footer, Header, WeatherSearch, SearchForm, WeatherDisplay } from '../components';
+import { DebounceInput } from 'react-debounce-input';
 
 export default function Home() {
   const [data, setData] = useState<WeatherData | undefined>();
   const [location, setLocation] = useState<string>('');
-  const [response, setResponse] = useState<string | null>(null);
   const [error, setError] = useState<WeatherData | undefined>();
   const [fetching, setFetching] = useState<boolean>();
 
   const fetchWeather = () => {
     console.log('fetching weather for', location);
-    if(!location){
+    if(!location && !data){
         return;
     }
-    setData(undefined);
-    setError(undefined);
-    setResponse(null);
+    // setData(undefined);
+    // setError(undefined);
+    // setResponse(null);
     setFetching(true);
 
     fetchWeatherApi(location)
       .then((res) => {
         // console.log(res);
         setData(res.data);
-        setResponse(res.data.name);
+        // setResponse(res.data.name);
         console.log(data)
       })
       .catch((error) => {
@@ -34,7 +34,7 @@ export default function Home() {
   };
 //   console.log(data)
 
-//   useEffect(fetchWeather, []);
+  useEffect(fetchWeather, []);
   useEffect(fetchWeather, [location]);
 
   const onSearchInput = (e: any) => {
@@ -50,16 +50,17 @@ export default function Home() {
           <label htmlFor="location-search">
             <span>Enter location</span>
           </label>
-          <input 
+          <DebounceInput 
             type='text'
             id='location-search'
             placeholder='Search for locations'
             name='search'
+            minLength={2}
+            debounceTimeout={500}
             onChange={onSearchInput}
           />
-          <button type='submit'>Search</button>
         </form>
-      <SearchForm onSearchInput={onSearchInput} />
+      <SearchForm onSearchInput={location} />
       <WeatherDisplay weatherData={data} />
       <Footer />
     </div>

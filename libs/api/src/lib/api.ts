@@ -7,3 +7,5 @@ const api_key = `6026f341a67b8cf7259f31b17578ea61`;
 
 
 export const fetchWeatherApi = async (location: string): Promise<AxiosResponse<WeatherData, any>> => await axios(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`);
+
+

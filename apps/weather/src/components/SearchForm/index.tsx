@@ -1,6 +1,6 @@
 
 
-export function SearchForm(onSearchInput: any) {
+export function SearchForm(props: any) {
 
     return(
         <form>
@@ -12,7 +12,7 @@ export function SearchForm(onSearchInput: any) {
             id='location-search'
             placeholder='Search for locations'
             name='search'
-            onChange={() => onSearchInput}
+            onChange={() => props.onSearchInput}
           />
           <button type='submit'>Search</button>
         </form>
