@@ -13,46 +13,47 @@ import {
     ResultsWind } from "./styled"
 
 
-export function WeatherDisplay(props: any) {
+export function WeatherDisplay({weatherData}: any) {
+
     return(
         <Container>
-                {props.weatherData?.main && (
+                {weatherData?.main && (
             <ResultsCard>
                 <ResultsLocation>
-                    <p>{props.weatherData.name}</p>
+                    <p>{weatherData.name}</p>
                 </ResultsLocation>
                 <ResultsTop>
-                    {props.weatherData.main && (
+                    {weatherData.main && (
                     <ResultsTemperature>
-                        <h1>{props.weatherData.main.temp.toFixed()}°C</h1>
+                        <h1>{weatherData.main.temp.toFixed()}°C</h1>
                     </ResultsTemperature>
                     )}
                     {/* //TODO if statement that changes the description to a picture or changes whole background */}
-                    {!!props.weatherData.weather?.length && (
+                    {!!weatherData.weather?.length && (
                     <ResultsDescription>
-                        <p>{props.weatherData.weather[0].main}</p>
+                        <p>{weatherData.weather[0].main}</p>
                     </ResultsDescription>
                     )}
                 </ResultsTop>
 
                 <ResultsBottom>
-                    {props.weatherData.main && (
+                    {weatherData.main && (
                     <ResultsFeels>
-                        <p>{props.weatherData.main.feels_like.toFixed()}°C</p>
+                        <p>{weatherData.main.feels_like.toFixed()}°C</p>
                         <p>Feels Like</p>
                     </ResultsFeels>
                     )}
 
-                    {props.weatherData.main && (
+                    {weatherData.main && (
                     <ResultsHumidity>
-                        <p>{props.weatherData.main.humidity}%</p>
+                        <p>{weatherData.main.humidity}%</p>
                         <p>Humidity</p>
                     </ResultsHumidity>
                     )}
 
-                    {props.weatherData.main && (
+                    {weatherData.main && (
                     <ResultsWind>
-                        <p>{props.weatherData.wind.speed.toFixed()} km/h</p>
+                        <p>{weatherData.wind.speed.toFixed()} km/h</p>
                         <p>Wind Speed</p>
                     </ResultsWind>
                     )}

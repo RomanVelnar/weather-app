@@ -14,16 +14,14 @@ export default function Home() {
     if(!location && !data){
         return;
     }
-    // setData(undefined);
-    // setError(undefined);
-    // setResponse(null);
+    setData(undefined);
+    setError(undefined);
     setFetching(true);
 
     fetchWeatherApi(location)
       .then((res) => {
         // console.log(res);
         setData(res.data);
-        // setResponse(res.data.name);
         console.log(data)
       })
       .catch((error) => {
@@ -54,13 +52,13 @@ export default function Home() {
             type='text'
             id='location-search'
             placeholder='Search for locations'
-            name='search'
             minLength={2}
             debounceTimeout={500}
             onChange={onSearchInput}
+            autoFocus
           />
         </form>
-      <SearchForm onSearchInput={location} />
+      {/* <SearchForm onSearchInput={location} /> */}
       <WeatherDisplay weatherData={data} />
       <Footer />
     </div>
