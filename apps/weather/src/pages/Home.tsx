@@ -1,7 +1,49 @@
+import styled, { ThemeProvider } from 'styled-components';
+import { useTheme } from '../utils/ThemeManager';
+import * as themeConf from '../utils/theme';
+
 import { useEffect, useState } from 'react';
 import { WeatherData, fetchWeatherApi } from '@weather/api';
-import { Footer, Header, WeatherSearch, SearchForm, WeatherDisplay } from '../components';
+import {
+  Footer,
+  Header,
+  WeatherSearch,
+  SearchForm,
+  WeatherDisplay,
+} from '../components';
 import { DebounceInput } from 'react-debounce-input';
+
+import { ThemeManager } from '../utils/ThemeManager';
+
+const StyledApp = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+  background-color: ${themeConf.backgroundColor};
+  color: ${themeConf.textColor};
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+`;
+
+const Button = styled.button`
+  background: ${themeConf.buttonBackgroundColor};
+  border: none;
+  border-radius: 0.3em;
+  box-shadow: none;
+  color: ${themeConf.buttonTextColor};
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.5em 1em;
+`;
 
 export default function Home() {
   const [data, setData] = useState<WeatherData | undefined>();
@@ -11,8 +53,8 @@ export default function Home() {
 
   const fetchWeather = () => {
     console.log('fetching weather for', location);
-    if(!location && !data){
-        return;
+    if (!location && !data) {
+      return;
     }
     setData(undefined);
     setError(undefined);
@@ -22,7 +64,7 @@ export default function Home() {
       .then((res) => {
         // console.log(res);
         setData(res.data);
-        console.log(data)
+        console.log(data);
       })
       .catch((error) => {
         console.error(error);
@@ -30,37 +72,47 @@ export default function Home() {
       })
       .finally(() => setFetching(false));
   };
-//   console.log(data)
+  //   console.log(data)
 
   useEffect(fetchWeather, []);
   useEffect(fetchWeather, [location]);
 
   const onSearchInput = (e: any) => {
     setLocation(e.target.value);
-  }
+  };
 
-//   console.log(data)
+  //   console.log(data)
+  const theme = useTheme();
 
   return (
-    <div>
-      <Header />
-      <form>
-          <label htmlFor="location-search">
-            <span>Enter location</span>
-          </label>
-          <DebounceInput 
-            type='text'
-            id='location-search'
-            placeholder='Search for locations'
-            minLength={2}
-            debounceTimeout={500}
-            onChange={onSearchInput}
-            autoFocus
-          />
-        </form>
-      {/* <SearchForm onSearchInput={location} /> */}
-      <WeatherDisplay weatherData={data} />
-      <Footer />
-    </div>
+    <ThemeProvider theme={{ mode: theme.mode }}>
+      <Wrapper>
+        <div>
+          <Header />
+          <form>
+            <label htmlFor="location-search">
+              <span>Enter location</span>
+            </label>
+            <DebounceInput
+              type="text"
+              id="location-search"
+              placeholder="Search for locations"
+              minLength={2}
+              debounceTimeout={500}
+              onChange={onSearchInput}
+              autoFocus
+            />
+          </form>
+          {/* <SearchForm onSearchInput={location} /> */}
+          <WeatherDisplay weatherData={data} />
+          <Footer />
+          <Button onClick={() => theme.toggle()}>
+            {theme.mode === 'dark'
+              ? 'Switch to Light Mode'
+              : 'Switch to Dark Mode'}
+          </Button>
+        </div>
+      </Wrapper>
+    </ThemeProvider>
   );
 }

@@ -53,3 +53,8 @@ export interface Wind {
   speed: number;
   deg: number;
 }
+
+export interface ThemeContext {
+  mode: string,
+  toggle (): void;
+}
