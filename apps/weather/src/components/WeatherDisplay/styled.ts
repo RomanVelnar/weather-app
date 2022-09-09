@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import * as themeConf from '../../utils/theme';
+
 
 export const Container = styled.div`
   width: 100%;
@@ -8,6 +10,7 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
   background-color: #e1ffee;
+  background-color: ${themeConf.backgroundColor};
 `;
 
 export const SearchContainer = styled.div`

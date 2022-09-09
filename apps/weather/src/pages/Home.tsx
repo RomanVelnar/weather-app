@@ -13,15 +13,6 @@ import {
 } from '../components';
 import { DebounceInput } from 'react-debounce-input';
 
-import { ThemeManager } from '../utils/ThemeManager';
-
-const StyledApp = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
 const Wrapper = styled.div`
   background-color: ${themeConf.backgroundColor};
   color: ${themeConf.textColor};
@@ -88,6 +79,11 @@ export default function Home() {
     <ThemeProvider theme={{ mode: theme.mode }}>
       <Wrapper>
         <div>
+          <Button onClick={() => theme.toggle()}>
+            {theme.mode === 'dark'
+              ? 'Switch to Light Mode'
+              : 'Switch to Dark Mode'}
+          </Button>
           <Header />
           <form>
             <label htmlFor="location-search">
@@ -106,11 +102,6 @@ export default function Home() {
           {/* <SearchForm onSearchInput={location} /> */}
           <WeatherDisplay weatherData={data} />
           <Footer />
-          <Button onClick={() => theme.toggle()}>
-            {theme.mode === 'dark'
-              ? 'Switch to Light Mode'
-              : 'Switch to Dark Mode'}
-          </Button>
         </div>
       </Wrapper>
     </ThemeProvider>
