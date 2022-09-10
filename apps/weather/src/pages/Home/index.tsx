@@ -1,40 +1,16 @@
-import styled, { ThemeProvider } from 'styled-components';
-import { useTheme } from '../utils/ThemeManager';
-import * as themeConf from '../utils/theme';
+import { ThemeProvider } from 'styled-components';
+import { useTheme } from '../../assets/ThemeManager';
 
 import { useEffect, useState } from 'react';
 import { WeatherData, fetchWeatherApi } from '@weather/api';
 import {
   Footer,
   Header,
-  WeatherSearch,
-  SearchForm,
   WeatherDisplay,
-} from '../components';
+} from '../../components';
+import { Wrapper, Button } from './styled';
+
 import { DebounceInput } from 'react-debounce-input';
-
-const Wrapper = styled.div`
-  background-color: ${themeConf.backgroundColor};
-  color: ${themeConf.textColor};
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-`;
-
-const Button = styled.button`
-  background: ${themeConf.buttonBackgroundColor};
-  border: none;
-  border-radius: 0.3em;
-  box-shadow: none;
-  color: ${themeConf.buttonTextColor};
-  cursor: pointer;
-  font-size: 1em;
-  padding: 0.5em 1em;
-`;
 
 export default function Home() {
   const [data, setData] = useState<WeatherData | undefined>();

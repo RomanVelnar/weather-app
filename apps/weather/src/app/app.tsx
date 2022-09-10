@@ -1,11 +1,8 @@
-import styled, { ThemeProvider } from 'styled-components';
-import { ThemeManager, useTheme } from '../utils/ThemeManager';
-import * as themeConf from '../utils/theme';
+import { ThemeManager, useTheme } from '../assets/ThemeManager';
 import Home from '../pages/Home';
-import GlobalStyle from '../utils/GlobalStyle'
+import GlobalStyle from '../assets/GlobalStyle'
 
 const App: React.FC = () => {
-  // const theme = useTheme();
 
   return (
     <ThemeManager>

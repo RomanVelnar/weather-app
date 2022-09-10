@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as themeConf from '../../utils/theme';
+import * as themeConf from '../../assets/Theme';
 
 
 export const Container = styled.div`
