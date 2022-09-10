@@ -10,9 +10,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
 `;
+
+export const HeaderWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+`
 
 export const Button = styled.button`
   background: ${themeConf.buttonBackgroundColor};
@@ -26,5 +30,8 @@ export const Button = styled.button`
 `;
 
 export const LocationSearch = styled.form`
+    width: 40vw;
+    background-color: ${themeConf.containerBackgroundColor};
     padding: 1rem;
+
 `

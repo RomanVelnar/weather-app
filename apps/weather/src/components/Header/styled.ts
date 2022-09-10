@@ -2,15 +2,14 @@ import styled from "styled-components"
 import * as themeConf from '../../assets/Theme';
 
 export const HeaderContainer = styled.div`
-    width: 100%;
+    width: 40vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 1rem;
     background-color: ${themeConf.containerBackgroundColor};
 `
 export const HeaderTitle = styled.h1`
-    font-size: 1.5rem;
+    font-size: 4rem;
 `
 export const ThemeSwitch = styled.button`
     background-color: #555555;

@@ -3,14 +3,11 @@ import { useTheme } from '../../assets/ThemeManager';
 
 import { useEffect, useState } from 'react';
 import { WeatherData, fetchWeatherApi } from '@weather/api';
-import {
-  Footer,
-  Header,
-  WeatherDisplay,
-} from '../../components';
-import { Wrapper, Button, LocationSearch } from './styled';
+import { Footer, Header, WeatherDisplay } from '../../components';
+import { Wrapper, LocationSearch, HeaderWrapper } from './styled';
 
 import { DebounceInput } from 'react-debounce-input';
+import { ThemeButton } from '../../assets/ThemeButton';
 
 export default function Home() {
   const [data, setData] = useState<WeatherData | undefined>();
@@ -54,28 +51,26 @@ export default function Home() {
   return (
     <ThemeProvider theme={{ mode: theme.mode }}>
       <Wrapper>
-          <Button onClick={() => theme.toggle()}>
-            {theme.mode === 'dark'
-              ? 'Switch to Light Mode'
-              : 'Switch to Dark Mode'}
-          </Button>
+        <HeaderWrapper>
           <Header />
-          <LocationSearch>
-            <label htmlFor="location-search">
-              <span>Enter location</span>
-            </label>
-            <DebounceInput
-              type="text"
-              id="location-search"
-              placeholder="Search for locations"
-              minLength={2}
-              debounceTimeout={500}
-              onChange={onSearchInput}
-              autoFocus
-            />
-          </LocationSearch>
-          <WeatherDisplay weatherData={data} />
-          <Footer />
+          <ThemeButton />
+        </HeaderWrapper> 
+        <LocationSearch>
+          <label htmlFor="location-search">
+            <span>Enter location</span>
+          </label>
+          <DebounceInput
+            type="text"
+            id="location-search"
+            placeholder="Search for locations"
+            minLength={2}
+            debounceTimeout={500}
+            onChange={onSearchInput}
+            autoFocus
+          />
+        </LocationSearch>
+        <WeatherDisplay weatherData={data} />
+        <Footer />
       </Wrapper>
     </ThemeProvider>
   );

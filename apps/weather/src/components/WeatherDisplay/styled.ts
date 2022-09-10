@@ -3,14 +3,15 @@ import * as themeConf from '../../assets/Theme';
 
 
 export const Container = styled.div`
-  width: 100%;
+  width: 80%;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #e1ffee;
-  background-color: ${themeConf.backgroundColor};
+  background-color: ${themeConf.containerBackgroundColor};
 `;
 
 export const SearchContainer = styled.div`
@@ -28,19 +29,18 @@ export const SearchBar = styled.form`
 export const SearchButton = styled.button``;
 
 export const ResultsCard = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0 5rem;
+  width: 90%;
+  height: 90%;
+  padding: 5rem 5rem;
   text-align: center;
-  background-color: #ffeeaf;
   color: #7fbcd2;
+  background-color: ${themeConf.resultsCardBackground}
+
 `;
 export const ResultsTop = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: -8rem;
 `;
 
 export const ResultsLocation = styled.div`
@@ -64,6 +64,7 @@ export const ResultsBottom = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-top: 5rem;
   font-size: 1.1rem;
 `;
 export const ResultsFeels = styled.div`

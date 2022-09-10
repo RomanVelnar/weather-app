@@ -24,3 +24,8 @@ export const containerBackgroundColor = theme('mode', {
   light: '#FFEEAF',
   dark: '#ECBC55'
 })
+
+export const resultsCardBackground = theme('mode', {
+  light: '#E1FFEE',
+  dark: '#432C51'
+})
