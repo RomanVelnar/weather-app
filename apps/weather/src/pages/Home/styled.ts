@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   color: ${themeConf.textColor};
   text-align: center;
   min-height: 100vh;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,3 +24,7 @@ export const Button = styled.button`
   font-size: 1em;
   padding: 0.5em 1em;
 `;
+
+export const LocationSearch = styled.form`
+    padding: 1rem;
+`

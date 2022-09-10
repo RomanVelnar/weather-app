@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import * as themeConf from '../../assets/Theme';
 
 export const FooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #a5f1e9;
+  background-color: ${themeConf.containerBackgroundColor};
   padding: 1rem 4rem;
 `;
 

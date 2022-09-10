@@ -8,7 +8,7 @@ import {
   Header,
   WeatherDisplay,
 } from '../../components';
-import { Wrapper, Button } from './styled';
+import { Wrapper, Button, LocationSearch } from './styled';
 
 import { DebounceInput } from 'react-debounce-input';
 
@@ -54,14 +54,13 @@ export default function Home() {
   return (
     <ThemeProvider theme={{ mode: theme.mode }}>
       <Wrapper>
-        <div>
           <Button onClick={() => theme.toggle()}>
             {theme.mode === 'dark'
               ? 'Switch to Light Mode'
               : 'Switch to Dark Mode'}
           </Button>
           <Header />
-          <form>
+          <LocationSearch>
             <label htmlFor="location-search">
               <span>Enter location</span>
             </label>
@@ -74,11 +73,9 @@ export default function Home() {
               onChange={onSearchInput}
               autoFocus
             />
-          </form>
-          {/* <SearchForm onSearchInput={location} /> */}
+          </LocationSearch>
           <WeatherDisplay weatherData={data} />
           <Footer />
-        </div>
       </Wrapper>
     </ThemeProvider>
   );

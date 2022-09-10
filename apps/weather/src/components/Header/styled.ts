@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import * as themeConf from '../../assets/Theme';
 
 export const HeaderContainer = styled.div`
     width: 100%;
@@ -6,6 +7,7 @@ export const HeaderContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 1rem;
+    background-color: ${themeConf.containerBackgroundColor};
 `
 export const HeaderTitle = styled.h1`
     font-size: 1.5rem;
