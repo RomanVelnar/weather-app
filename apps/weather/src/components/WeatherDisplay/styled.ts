@@ -4,7 +4,7 @@ import * as themeConf from '../../assets/Theme';
 
 export const Container = styled.div`
   width: 80%;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +31,7 @@ export const SearchButton = styled.button``;
 export const ResultsCard = styled.div`
   width: 90%;
   height: 90%;
-  padding: 5rem 5rem;
+  padding: 5rem 7rem;
   text-align: center;
   color: #7fbcd2;
   background-color: ${themeConf.resultsCardBackground}
@@ -49,7 +49,7 @@ export const ResultsLocation = styled.div`
 `;
 
 export const ResultsTemperature = styled.div`
-  font-size: 4rem;
+  font-size: 5rem;
 `;
 export const ResultsDescription = styled.div`
   display: flex;
@@ -67,14 +67,10 @@ export const ResultsBottom = styled.div`
   padding-top: 5rem;
   font-size: 1.1rem;
 `;
-export const ResultsFeels = styled.div`
-  font-size: 1.1rem;
-`;
-
-export const ResultsHumidity = styled.div`
-  font-size: 1.1rem;
-`;
-
-export const ResultsWind = styled.div`
+export const ResultsBottomComp = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.1rem;
 `;

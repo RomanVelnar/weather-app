@@ -12,6 +12,7 @@ export const FooterContainer = styled.div`
 
 export const FooterTitle = styled.h2`
   font-size: 1rem;
+  padding-right: 2rem;
 `;
 
 export const FooterLink = styled.a``;
