@@ -4,10 +4,9 @@ import { useTheme } from '../../assets/ThemeManager';
 import { useEffect, useState } from 'react';
 import { WeatherData, fetchWeatherApi } from '@weather/api';
 import { Footer, Header, WeatherDisplay } from '../../components';
-import { Wrapper, LocationSearch, HeaderWrapper, SearchInput } from './styled';
+import { Wrapper, LocationSearch, SearchInput } from './styled';
 
 import { DebounceInput } from 'react-debounce-input';
-import { ThemeButton, ToggleButton } from '../../assets/ThemeButton';
 
 export default function Home() {
   const [data, setData] = useState<WeatherData | undefined>();
@@ -51,11 +50,7 @@ export default function Home() {
   return (
     <ThemeProvider theme={{ mode: theme.mode }}>
       <Wrapper>
-        <HeaderWrapper>
-          <Header />
-          {/* <ThemeButton /> */}
-          <ToggleButton />
-        </HeaderWrapper> 
+        <Header />
         <LocationSearch>
           <label htmlFor="location-search">
             <span>Enter location</span>

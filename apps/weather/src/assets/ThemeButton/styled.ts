@@ -17,7 +17,7 @@ export const Button = styled.button`
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  background: ${themeConf.containerBackgroundColor};
+  background: ${themeConf.backgroundColor};
   padding-right: 1rem;
 `;
 

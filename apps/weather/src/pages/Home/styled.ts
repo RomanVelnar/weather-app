@@ -13,11 +13,6 @@ export const Wrapper = styled.div`
   font-size: calc(10px + 2vmin);
 `;
 
-export const HeaderWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-`
-
 export const Button = styled.button`
   background: ${themeConf.buttonBackgroundColor};
   border: none;
@@ -31,11 +26,14 @@ export const Button = styled.button`
 
 export const LocationSearch = styled.form`
     width: 40vw;
-    background-color: ${themeConf.containerBackgroundColor};
+    background-color: ${themeConf.backgroundColor};
     padding: 1rem;
 
 `
 
 export const SearchInput = styled.input`
   font-size: 2rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-radius: 20px;
 `

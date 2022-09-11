@@ -6,7 +6,7 @@ export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: ${themeConf.containerBackgroundColor};
+    background-color: ${themeConf.backgroundColor};
 `
 export const HeaderTitle = styled.h1`
     font-size: 4rem;
