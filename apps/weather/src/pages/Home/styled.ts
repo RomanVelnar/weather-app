@@ -35,3 +35,7 @@ export const LocationSearch = styled.form`
     padding: 1rem;
 
 `
+
+export const SearchInput = styled.input`
+  font-size: 2rem;
+`
