@@ -12,6 +12,7 @@
 - display the 5day forecast
 - option to switch units between metric and imperial
 - change the weather conditions (clouds, sunny...) to background pictures
+- make the app in react-native
 
 ## How to install the app
 Firstly, clone the repo:
